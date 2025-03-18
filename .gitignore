@@ -26,8 +26,8 @@ var/
 *.egg
 
 # Output files
-fq_parameters.csv
-state_results.json
+input/*
+output/*
 
 # Virtual Environment
 venv/
