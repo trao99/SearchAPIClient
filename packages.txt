@@ -1,0 +1,3 @@
+pyJWT
+requests
+urllib3

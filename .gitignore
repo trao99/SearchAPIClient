@@ -1,0 +1,42 @@
+# Ignore config files with secrets
+config.ini
+config.*.ini
+*.log
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Output files
+output/*
+input/*
+fq_parameters.csv
+state_results.json
+
+# Virtual Environment
+venv/
+ENV/
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
