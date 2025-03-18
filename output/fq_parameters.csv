@@ -1,0 +1,8 @@
+State,Filter Generated
+AL,"fq=country.s_i:US fq=statenav.s_i:""AL""country.s_i:""US"" fq={!frange+l=0.01}$qq"
+AK,"fq=country.s_i:US fq=statenav.s_i:""AK""country.s_i:""US"" fq={!frange+l=0.01}$qq"
+AZ,"fq=country.s_i:US fq=_query_:""{!geofilt+sfield=latitudelongitude.latlon_is+pt=35.3552527,-109.054538+d=80.467}"" fq={!frange+l=0.01}$qq"
+AL,"fq=country.s_i:US fq=statenav.s_i:""AL""country.s_i:""US"" fq={!frange+l=0.01}$qq"
+AL,"fq=country.s_i:US fq=statenav.s_i:""AL""country.s_i:""US"" fq={!frange+l=0.01}$qq"
+AK,"fq=country.s_i:US fq=statenav.s_i:""AK""country.s_i:""US"" fq={!frange+l=0.01}$qq"
+AZ,"fq=country.s_i:US fq=_query_:""{!geofilt+sfield=latitudelongitude.latlon_is+pt=35.3552527,-109.054538+d=80.467}"" fq={!frange+l=0.01}$qq"
