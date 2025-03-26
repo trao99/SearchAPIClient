@@ -1,8 +1,6 @@
 State,Filter Generated
-AL,"fq=country.s_i:US fq=statenav.s_i:""AL""country.s_i:""US"" fq={!frange+l=0.01}$qq"
-AK,"fq=country.s_i:US fq=statenav.s_i:""AK""country.s_i:""US"" fq={!frange+l=0.01}$qq"
-AZ,"fq=country.s_i:US fq=_query_:""{!geofilt+sfield=latitudelongitude.latlon_is+pt=35.3552527,-109.054538+d=80.467}"" fq={!frange+l=0.01}$qq"
-AL,"fq=country.s_i:US fq=statenav.s_i:""AL""country.s_i:""US"" fq={!frange+l=0.01}$qq"
-AL,"fq=country.s_i:US fq=statenav.s_i:""AL""country.s_i:""US"" fq={!frange+l=0.01}$qq"
-AK,"fq=country.s_i:US fq=statenav.s_i:""AK""country.s_i:""US"" fq={!frange+l=0.01}$qq"
-AZ,"fq=country.s_i:US fq=_query_:""{!geofilt+sfield=latitudelongitude.latlon_is+pt=35.3552527,-109.054538+d=80.467}"" fq={!frange+l=0.01}$qq"
+AL,fq=statenav.s_i:\"AL\" fq=country.s_i:(US+OR+FR) fq={!frange+l=0.01}$qq
+AK,fq=statenav.s_i:\"AK\" fq=country.s_i:(US+OR+FR) fq={!frange+l=0.01}$qq
+AZ,fq=statenav.s_i:\"AZ\" fq=country.s_i:(US+OR+FR) fq={!frange+l=0.01}$qq
+600 Dexter Ave\, Montgomery\, AL 36130,fq=_query_:\"{!geofilt+sfield=latitudelongitude.latlon_is+pt=32.3776962\,-86.3005089+d=80.467}\" fq=country.s_i:US fq={!frange+l=0.01}$qq
+123 W 4th Ave\, Anchorage\, AK 99501,fq=_query_:\"{!geofilt+sfield=latitudelongitude.latlon_is+pt=61.2184483\,-149.8963411+d=80.467}\" fq=country.s_i:US fq={!frange+l=0.01}$qq

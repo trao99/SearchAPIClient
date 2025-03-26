@@ -135,7 +135,7 @@ class DataWriter:
         file_exists = os.path.isfile(output_file)
         
         with open(output_file, 'a', newline='') as csvfile:
-            writer = csv.writer(csvfile)
+            writer = csv.writer(csvfile, quoting=csv.QUOTE_NONE, escapechar='\\')
             
             if not file_exists:
                 writer.writerow(['State', 'Filter Generated'])
@@ -189,6 +189,17 @@ class SearchAPI:
                     filter_item["value"]["location"]["text"] = state
         
         return payload_copy
+
+    def _update_payload_country(self, payload: Dict, code: str) -> Dict:
+        """Update the country code in the payload template."""
+        payload_copy = json.loads(json.dumps(payload))
+        
+        for filter_item in payload_copy.get("filters", []):
+            if isinstance(filter_item, dict) and "value" in filter_item:
+                if "location" in filter_item["value"]:
+                    filter_item["value"]["location"]["countryCodes"].append(code)
+        
+        return payload_copy
     
     def _make_api_request(self, payload: Dict) -> Dict:
         """Make an API request with the given payload."""
@@ -225,6 +236,7 @@ class SearchAPI:
             raise Exception(f"API request failed: {response.status_code} - {response.text}")
     
     def process_states(self, states_file: str, payload_file: str, delay: int = 1) -> List[Dict]:
+        
         """Process states from a file and make API requests."""
         # Read states from file
         with open(states_file, 'r') as file:
@@ -268,6 +280,152 @@ class SearchAPI:
         
         return results
 
+    def process_countries(self, countries_file: str, payload_file: str, delay: int = 1) -> List[Dict]:
+        """Process countries from a file and make API requests."""
+        # Read countries from file
+        with open(countries_file, 'r') as file:
+            countries = [line.strip() for line in file if line.strip()]
+        
+        # Load payload template
+        payload_template = self._load_payload_template(payload_file)
+        
+        results = []
+        
+        # Process each country
+        for code in countries:
+            self.logger.info(f"Processing country: {code}")
+            
+            try:
+                # Update payload with current country
+                payload = self._update_payload_country(payload_template, code)
+
+                # Make API request
+                response_json = self._make_api_request(payload)
+                
+                # Process response
+                result = self.response_processor.process_response(response_json, code)
+                
+                # Write result to CSV
+                self.data_writer.write_to_csv(result, self.output_csv)
+                
+                # Add to results list
+                results.append(result)
+                
+                self.logger.info(f"Successfully processed country: {code}")
+                
+            except Exception as e:
+                self.logger.error(f"Exception occurred for country {code}: {str(e)}")
+                
+            # Add a delay to avoid overwhelming the API
+            time.sleep(delay)
+        
+        # Save all results to JSON
+        self.data_writer.save_json_results(results, self.output_json)
+        
+        return results
+
+    def process_addresses(self, address_file: str, payload_file: str, delay: int = 1) -> List[Dict]: 
+        """Process countries from a file and make API requests."""
+        # Read address from file
+        with open(address_file, 'r') as file:
+            countries = [line.strip() for line in file if line.strip()]
+        
+        # Load payload template
+        payload_template = self._load_payload_template(payload_file)
+        
+        results = []
+        
+        # Process each address
+        for code in countries:
+            self.logger.info(f"Processing address: {code}")
+            
+            try:
+                # Update payload with current address
+                payload = self._update_payload_state(payload_template, code)
+
+                # Make API request
+                response_json = self._make_api_request(payload)
+                
+                # Process response
+                result = self.response_processor.process_response(response_json, code)
+                
+                # Write result to CSV
+                self.data_writer.write_to_csv(result, self.output_csv)
+                
+                # Add to results list
+                results.append(result)
+                
+                self.logger.info(f"Successfully processed address: {code}")
+                
+            except Exception as e:
+                self.logger.error(f"Exception occurred for address {code}: {str(e)}")
+                
+            # Add a delay to avoid overwhelming the API
+            time.sleep(delay)
+        
+        # Save all results to JSON
+        self.data_writer.save_json_results(results, 'fq_parameters_address.csv')
+        
+        return results
+
+    def process_document_ids(self, document_ids_file: str, base_url: str = "http://qtwvsmcjobm1a.atl.careerbuilder.com:31000/solr/mcjob/select") -> int:
+        """
+        Process document IDs from a file and make GET requests to check if they exist.
+        
+        Args:
+            document_ids_file (str): Path to the file containing document IDs, one per line
+            base_url (str): Base URL for the Solr API
+            
+        Returns:
+            int: Count of documents found
+        """
+        # Read document IDs from file
+        with open(document_ids_file, 'r') as file:
+            document_ids = [line.strip() for line in file if line.strip()]
+        
+        self.logger.info(f"Processing {len(document_ids)} document IDs")
+        
+        found_count = 0
+        
+        # Process each document ID
+        for doc_id in document_ids:
+            self.logger.info(f"Processing document ID: {doc_id}")
+            
+            try:
+                # Construct the query URL
+                params = {
+                    'wt': 'json',
+                    'indent': 'true',
+                    'q.op': 'OR',
+                    'q': f'documentid:{doc_id}',
+                    'useParams': '',
+                    'fl': 'documentid'
+                }
+                
+                # Make GET request
+                response = requests.get(base_url, params=params)
+                
+                if response.status_code == 200:
+                    response_json = response.json()
+                    
+                    # Check if document was found
+                    if response_json.get('response', {}).get('numFound', 0) == 1:
+                        found_count += 1
+                        self.logger.info(f"Document found: {doc_id}")
+                    else:
+                        self.logger.info(f"Document not found: {doc_id}")
+                else:
+                    self.logger.error(f"API request failed for {doc_id}: {response.status_code} - {response.text}")
+                    
+            except Exception as e:
+                self.logger.error(f"Exception occurred for document ID {doc_id}: {str(e)}")
+                
+            # Add a small delay to avoid overwhelming the API
+            time.sleep(0.1)
+        
+        self.logger.info(f"Found {found_count} out of {len(document_ids)} documents")
+        return found_count
+
 
 def setup_logging(log_file: str = 'search_api.log', level: int = logging.INFO) -> None:
     """Set up logging configuration."""
@@ -309,10 +467,13 @@ def load_config(config_file: str = 'config.ini') -> Dict:
         'hostname': api_config['hostname'],
         'endpoint_url': api_config['endpoint_url'],
         'states_file': api_config.get('states_file', 'us_states.txt'),
+        'country_file': api_config.get('country_file', 'country_codes.txt'),
+        'address_file': api_config.get('address_file', 'us_addresses.txt'),
         'payload_file': api_config.get('payload_file', 'payload_template.json'),
         'output_csv': api_config.get('output_csv', 'fq_parameters.csv'),
         'output_json': api_config.get('output_json', 'state_results.json')
     }
+
 
 
 def main(config_file: str):
@@ -322,6 +483,13 @@ def main(config_file: str):
     logger = logging.getLogger(__name__)
     
     try:
+
+        parser = argparse.ArgumentParser(description="Search API Client")
+        parser.add_argument("--mode", choices=["states", "countries", "documentids", "address"], required=True, 
+                            help="Specify what to process: states, countries, or document IDs.")
+
+        args = parser.parse_args()
+  
         # Load configuration
         logger.info(f"Loading configuration from {config_file}")
         config = load_config(config_file)
@@ -336,13 +504,21 @@ def main(config_file: str):
             output_json=config['output_json']
         )
         
-        # Process states
-        results = api_client.process_states(
-            states_file=config['states_file'],
-            payload_file=config['payload_file']
-        )
-        
-        logger.info(f"Processed {len(results)} states successfully")
+
+        if args.mode == "states":
+            results = api_client.process_states(config['states_file'], config['payload_file'])
+            logger.info(f"Processed {len(results)} states successfully")
+        elif args.mode == "countries":
+            results = api_client.process_countries(config['country_file'], config['payload_file'])
+            logger.info(f"Processed {len(results)} countries successfully")
+        elif args.mode == "documentids":
+            document_ids_file = 'input/documentids.txt'
+            found_count = api_client.process_document_ids(document_ids_file)
+            logger.info(f"Found {found_count} documents")
+        elif args.mode == "address":
+            results = api_client.process_addresses(config['address_file'], config['payload_file'])
+            logger.info(f"Processed {len(results)} address successfully")
+
         logger.info(f"Results saved to {config['output_csv']} and {config['output_json']}")
         
     except FileNotFoundError as e:
@@ -359,9 +535,6 @@ def main(config_file: str):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Search API Client')
-    parser.add_argument('--config', default='config.ini', help='Path to configuration file (default: config.ini)')
-    args = parser.parse_args()
-    
-    exit_code = main(args.config)
+
+    exit_code = main('config.ini')
     exit(exit_code)

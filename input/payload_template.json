@@ -1,6 +1,422 @@
 {
-  "json payload": {
-    "key1": "value1",
-    "key2": "value2"
+  "enableSemanticSearchFeatures": true,
+  "deploymentType": "OFFMATRIX",
+  "learningToRank": {
+    "enable": false,
+    "model": "dynamicModel",
+    "reRankDocs": 100,
+    "returnFeatures": false,
+    "externalFeature": "Software Engineer"
+  },
+  "schema": {
+    "name": "mcjob_v1",
+    "pool": "mcjob",
+    "languages": [
+      "English"
+    ],
+    "fields": [
+      {
+        "name": "jobtitle",
+        "type": "FreeText",
+        "languages": "English",
+        "searchable": true,
+        "sortable": true,
+        "retrievable": true,
+        "normalizeLength": false
+      },
+      {
+        "name": "normalizedjobtitle",
+        "type": "String",
+        "searchable": true,
+        "sortable": true,
+        "retrievable": true,
+        "normalizeLength": false
+      },
+      {
+        "caseSensitive": false,
+        "normalizeLength": false,
+        "retrievable": true,
+        "searchable": true,
+        "name": "jobdetails",
+        "type": "FreeText",
+        "languages": "English"
+      },
+      {
+        "name": "searchtext",
+        "type": "Composite",
+        "retrievable": false,
+        "searchable": true,
+        "facetable": true,
+        "casesensitive": false,
+        "normalizeLength": false,
+        "buckets": {
+          "1": {
+            "Boost": 1,
+            "Fields": [
+              "jobtitle"
+            ],
+            "Hitmap": "jobtitle"
+          },
+          "2": {
+            "Boost": 1,
+            "Fields": [
+              "jobid"
+            ],
+            "Hitmap": "default"
+          },
+          "3": {
+            "Boost": 1,
+            "Fields": [
+              "normalizedjobtitle"
+            ],
+            "Hitmap": "jobtitle"
+          },
+          "4": {
+            "Boost": 1,
+            "Fields": [
+              "skilltext"
+            ],
+            "Hitmap": "nohitmapboost"
+          },
+          "default": {
+            "Boost": 1,
+            "Fields": [
+              "jobdetails"
+            ],
+            "Hitmap": "default"
+          }
+        }
+      },
+      {
+        "caseSensitive": false,
+        "normalizeLength": false,
+        "retrievable": false,
+        "searchable": true,
+        "name": "country",
+        "type": "String"
+      },
+      {
+        "caseSensitive": false,
+        "normalizeLength": false,
+        "retrievable": false,
+        "searchable": true,
+        "name": "statenav",
+        "type": "String"
+      },
+      {
+        "caseSensitive": false,
+        "normalizeLength": false,
+        "retrievable": false,
+        "searchable": true,
+        "name": "citynav",
+        "type": "String"
+      },
+      {
+        "caseSensitive": false,
+        "normalizeLength": false,
+        "retrievable": true,
+        "searchable": true,
+        "name": "latitudelongitude",
+        "type": "LatLon"
+      },
+      {
+        "caseSensitive": false,
+        "normalizeLength": false,
+        "retrievable": true,
+        "searchable": false,
+        "boost": 1,
+        "name": "geozip",
+        "type": "String"
+      },
+      {
+        "caseSensitive": true,
+        "normalizeLength": false,
+        "retrievable": false,
+        "searchable": false,
+        "name": "streetaddress",
+        "type": "String"
+      },
+      {
+        "name": "mastercommunitylist",
+        "type": "DelimitedText",
+        "delimiter": "Space",
+        "searchable": true,
+        "retrievable": false,
+        "normalizeLength": false
+      },
+      {
+        "name": "combemploymenttypes",
+        "type": "String",
+        "searchable": true,
+        "retrievable": true,
+        "multivalue": true,
+        "normalizeLength": false
+      },
+      {
+        "name": "contactcompanynav",
+        "type": "String",
+        "searchable": true,
+        "caseSensitive": true,
+        "retrievable": false,
+        "normalizeLength": false
+      },
+      {
+        "name": "companyname",
+        "type": "FreeText",
+        "searchable": true,
+        "retrievable": true,
+        "normalizeLength": false
+      },
+      {
+        "name": "modifieddate",
+        "type": "DateTime",
+        "searchable": true,
+        "sortable": true,
+        "retrievable": true,
+        "normalizeLength": false
+      },
+      {
+        "name": "postdate",
+        "type": "DateTime",
+        "searchable": true,
+        "sortable": true,
+        "retrievable": true,
+        "normalizeLength": false
+      },
+      {
+        "name": "activationdate",
+        "type": "DateTime",
+        "searchable": true,
+        "sortable": true,
+        "retrievable": true,
+        "normalizeLength": false
+      },
+      {
+        "name": "companycollapsehash",
+        "type": "String",
+        "searchable": true,
+        "caseSensitive": true,
+        "normalizeLength": false
+      },
+      {
+        "name": "companyjobtitlecollapsehash",
+        "type": "String",
+        "searchable": true,
+        "caseSensitive": true,
+        "normalizeLength": false
+      },
+      {
+        "name": "jobadpricingtypeid",
+        "type": "String",
+        "searchable": true,
+        "caseSensitive": true,
+        "retrievable": false,
+        "normalizeLength": false
+      },
+      {
+        "name": "skilltext",
+        "type": "DelimitedText",
+        "delimiter": "SemiColon",
+        "searchable": true,
+        "sortable": false,
+        "retrievable": false,
+        "normalizeLength": false
+      },
+      {
+        "name": "normalizedjobdetails",
+        "type": "FreeText",
+        "retrievable": true,
+        "searchable": true,
+        "caseSensitive": false,
+        "normalizeLength": false,
+        "sortable": true
+      },
+      {
+        "name": "payhigh",
+        "type": "Integer",
+        "retrievable": true,
+        "searchable": true,
+        "caseSensitive": true
+      },
+      {
+        "name": "paylow",
+        "type": "Integer",
+        "retrievable": true,
+        "searchable": true,
+        "caseSensitive": true
+      },
+      {
+        "name": "salarycurrency",
+        "type": "String",
+        "retrievable": false,
+        "searchable": true,
+        "caseSensitive": true
+      },
+      {
+        "name": "salaryperiod",
+        "type": "String",
+        "retrievable": false,
+        "searchable": true,
+        "caseSensitive": true
+      },
+      {
+        "name": "jobid",
+        "type": "String",
+        "retrievable": true,
+        "searchable": true,
+        "caseSensitive": true
+      },
+      {
+        "name": "boostingfactor",
+        "type": "Double",
+        "searchable": true,
+        "caseSensitive": true,
+        "retrievable": true,
+        "normalizeLength": false
+      },
+      {
+        "name": "applytype",
+        "type": "String",
+        "searchable": true,
+        "caseSensitive": false,
+        "retrievable": true,
+        "normalizeLength": false
+      }
+    ],
+    "hitmaps": {
+      "default": [
+        {
+          "max": "0",
+          "min": "0",
+          "value": 0
+        },
+        {
+          "max": "4",
+          "min": "1",
+          "value": 1.5
+        },
+        {
+          "max": "16",
+          "min": "5",
+          "value": 2
+        },
+        {
+          "max": "MAX",
+          "min": "17",
+          "value": 0
+        }
+      ],
+      "jobtitle": [
+        {
+          "max": "0",
+          "min": "0",
+          "value": 0
+        },
+        {
+          "max": "2",
+          "min": "1",
+          "value": 3
+        },
+        {
+          "max": "4",
+          "min": "3",
+          "value": 2
+        },
+        {
+          "max": "MAX",
+          "min": "5",
+          "value": 0
+        }
+      ],
+      "nohitmapboost": [
+        {
+          "max": "MAX",
+          "min": "0",
+          "value": 1
+        }
+      ]
+    },
+    "semanticSearch": {
+      "dictionaries": []
+    }
+  },
+  "queries": [
+    "Software Engineer"
+  ],
+  "filters": [
+    {
+      "value": {
+        "type": "geographyFilter",
+        "fields": {
+          "adminArea1": "statenav",
+          "city": "citynav",
+          "coordinate": "latitudelongitude",
+          "country": "country",
+          "postalCode": "geozip"
+        },
+        "location": {
+          "countryCodes": [
+            "US",
+            "FR"
+          ],
+          "AdminAreas": [
+            ""
+          ],
+          "text": ""
+        },
+        "radius": {
+          "units": "mi",
+          "upperBound": "50",
+          "lowerBound": "0"
+        }
+      },
+      "tag": ""
+    }
+  ],
+  "startPage": 1,
+  "showExplain": false,
+  "resultsPerPage": 10,
+  "sorts": [
+    {
+      "field": "postdate",
+      "direction": "DESC"
+    }
+  ],
+  "defaultOperator": "AND",
+  "adhocParameters": [
+    {
+      "name": "fq",
+      "value": "{!frange l=0.01}$qq",
+      "overrideAPI": false
+    }
+  ],
+  "facets": [],
+  "keywordSearchFields": [
+    "searchtext"
+  ],
+  "requestedFields": [
+    "documentid"
+  ],
+  "boostingfunction": {
+    "type": "function",
+    "name": "field",
+    "parameters": [
+      "boostingfactor"
+    ]
+  },
+  "normalizationFunction": {
+    "type": "function",
+    "name": "scale",
+    "parameters": [
+      {
+        "type": "function",
+        "name": "query",
+        "parameters": [
+          "$aq"
+        ]
+      },
+      0.01,
+      1
+    ]
   }
 }

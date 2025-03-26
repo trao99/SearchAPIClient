@@ -1,1 +1,402 @@
-[]
+[
+    {
+        "state": "AL",
+        "fq_parameters": [
+            "statenav.s_i:\"AL\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "AK",
+        "fq_parameters": [
+            "statenav.s_i:\"AK\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "AZ",
+        "fq_parameters": [
+            "statenav.s_i:\"AZ\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "AR",
+        "fq_parameters": [
+            "statenav.s_i:\"AR\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "CA",
+        "fq_parameters": [
+            "statenav.s_i:\"CA\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "CO",
+        "fq_parameters": [
+            "statenav.s_i:\"CO\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "CT",
+        "fq_parameters": [
+            "statenav.s_i:\"CT\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "DE",
+        "fq_parameters": [
+            "statenav.s_i:\"DE\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "FL",
+        "fq_parameters": [
+            "statenav.s_i:\"FL\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "GA",
+        "fq_parameters": [
+            "statenav.s_i:\"GA\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "HI",
+        "fq_parameters": [
+            "statenav.s_i:\"HI\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "ID",
+        "fq_parameters": [
+            "statenav.s_i:\"ID\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "IL",
+        "fq_parameters": [
+            "statenav.s_i:\"IL\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "IN",
+        "fq_parameters": [
+            "statenav.s_i:\"IN\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "IA",
+        "fq_parameters": [
+            "statenav.s_i:\"IA\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "KS",
+        "fq_parameters": [
+            "statenav.s_i:\"KS\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "KY",
+        "fq_parameters": [
+            "statenav.s_i:\"KY\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "LA",
+        "fq_parameters": [
+            "statenav.s_i:\"LA\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "ME",
+        "fq_parameters": [
+            "statenav.s_i:\"ME\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "MD",
+        "fq_parameters": [
+            "statenav.s_i:\"MD\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "MA",
+        "fq_parameters": [
+            "statenav.s_i:\"MA\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "MI",
+        "fq_parameters": [
+            "statenav.s_i:\"MI\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "MN",
+        "fq_parameters": [
+            "statenav.s_i:\"MN\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "MS",
+        "fq_parameters": [
+            "statenav.s_i:\"MS\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "MO",
+        "fq_parameters": [
+            "statenav.s_i:\"MO\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "MT",
+        "fq_parameters": [
+            "statenav.s_i:\"MT\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "NE",
+        "fq_parameters": [
+            "statenav.s_i:\"NE\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "NV",
+        "fq_parameters": [
+            "statenav.s_i:\"NV\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "NH",
+        "fq_parameters": [
+            "statenav.s_i:\"NH\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "NJ",
+        "fq_parameters": [
+            "statenav.s_i:\"NJ\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "NM",
+        "fq_parameters": [
+            "statenav.s_i:\"NM\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "NY",
+        "fq_parameters": [
+            "statenav.s_i:\"NY\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "NC",
+        "fq_parameters": [
+            "statenav.s_i:\"NC\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "ND",
+        "fq_parameters": [
+            "statenav.s_i:\"ND\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "OH",
+        "fq_parameters": [
+            "statenav.s_i:\"OH\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "OK",
+        "fq_parameters": [
+            "statenav.s_i:\"OK\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "OR",
+        "fq_parameters": [
+            "statenav.s_i:\"OR\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "PA",
+        "fq_parameters": [
+            "statenav.s_i:\"PA\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "RI",
+        "fq_parameters": [
+            "statenav.s_i:\"RI\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "SC",
+        "fq_parameters": [
+            "statenav.s_i:\"SC\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "SD",
+        "fq_parameters": [
+            "statenav.s_i:\"SD\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "TN",
+        "fq_parameters": [
+            "statenav.s_i:\"TN\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "TX",
+        "fq_parameters": [
+            "statenav.s_i:\"TX\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "UT",
+        "fq_parameters": [
+            "statenav.s_i:\"UT\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "VT",
+        "fq_parameters": [
+            "statenav.s_i:\"VT\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "VA",
+        "fq_parameters": [
+            "statenav.s_i:\"VA\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "WA",
+        "fq_parameters": [
+            "statenav.s_i:\"WA\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "WV",
+        "fq_parameters": [
+            "statenav.s_i:\"WV\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "WI",
+        "fq_parameters": [
+            "statenav.s_i:\"WI\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    },
+    {
+        "state": "WY",
+        "fq_parameters": [
+            "statenav.s_i:\"WY\"",
+            "country.s_i:US",
+            "{!frange+l=0.01}$qq"
+        ]
+    }
+]
